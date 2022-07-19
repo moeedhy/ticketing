@@ -9,8 +9,9 @@ declare global {
 
 let mongo: any;
 beforeAll(async () => {
-  mongo = await MongoMemoryServer.create();
   process.env.JWT_KEY = "secret";
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+  mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();
 
   await mongoose.connect(mongoUri);
