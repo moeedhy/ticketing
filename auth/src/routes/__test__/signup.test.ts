@@ -50,5 +50,4 @@ it("set cookie after successful signup", async () => {
     .send({ email: "test@test.com", password: "12345678" })
     .expect(201);
   expect(response.get("Set-Cookie")).toBeDefined();
-  console.log(response.get("Set-Cookie"));
 });
