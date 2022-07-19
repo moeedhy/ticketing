@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-mongodb-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-mongo
+  template:
+    metadata:
+      labels:
+        app: order-mongo
+    spec:
+      containers:
+        - name: order-mongo
+          image: mongo
+          imagePullPolicy: Never
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-mongodb-srv
+spec:
+  selector:
+    app: order-mongo
+  type: ClusterIP
+  ports:
+    - port: 27017
+      protocol: TCP
+      targetPort: 27017
