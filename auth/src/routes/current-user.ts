@@ -5,6 +5,6 @@ import { requireAuth } from "@moeedpubtest/common";
 
 const router = express.Router();
 
-router.get("/currentuser", requireAuth, currentUser, currentUserController);
+router.get("/currentuser", currentUser, currentUserController);
 
 export { router as currentUserRouter };
